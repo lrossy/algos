@@ -1,3 +1,10 @@
+/*
+
+    QuickSort
+
+   runs in O(n log n) time
+ */
+
 var _ = require('lodash');
 
 module.exports = function(){
@@ -8,8 +15,7 @@ module.exports = function(){
         if(unsortedList.length <= 1){
             return unsortedList;
         }
-
-        var pivot = unsortedList[0];
+        var pivot = unsortedList[randomIntFromInterval(0,unsortedList.length-1)];
         console.log('pivot: ' + pivot);
 
         var lower = _.filter(unsortedList, function(n) {
@@ -30,5 +36,8 @@ module.exports = function(){
         return res.concat(self.qs(lower)).concat(pivot).concat(self.qs(greater));
 
     };
-
+    function randomIntFromInterval(min,max)
+    {
+        return Math.floor(Math.random()*(max-min+1)+min);
+    }
 };
